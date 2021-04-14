@@ -1,7 +1,21 @@
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import { SearchBar } from "react-native-elements";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import OptionsSearch from "./optionsSearchComponent/OptionsSearch.component";
+import CardStatusProject from "../cardInfoStatusProjectComponent/CardStatusProject.component";
+import ListCards from "./listCardsComponent/ListCards.component";
+import ListCurrentColaboration from "./listCurrentColaborationComponent/ListCurrentColaboration.component";
+import PostCardInfo from "../publicationsComponents/PostCardInfoComponent/PostCardInfo.component";
+
+
+const CARD_DEFAULT = {
+  status:50,
+  price:5,
+  project:"Regalo de Cumpleaños",
+  vendor:"FlyArt",
+  rank:4.9,
+  timeline:"02 Abr 2021"
+}
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -33,12 +47,15 @@ export default function Home() {
         containerStyle={styles.search}
         inputStyle={{
           backgroundColor: "#eceff1",
-          fontSize: 14,
+          fontSize: 12,
           color: "#7a7a7a",
+          maxHeight:20,
         }}
-        inputContainerStyle={{ backgroundColor: "#eceff1", borderRadius: 25 }}
+        inputContainerStyle={{ backgroundColor: "#eceff1", borderRadius: 25, maxHeight:40 }}
       />
       <OptionsSearch></OptionsSearch>
+      <ListCards></ListCards>
+      <ListCurrentColaboration></ListCurrentColaboration>
     </View>
   );
 }
@@ -49,9 +66,12 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     width: Dimensions.get("window").width,
-    paddingTop: 25,
+    
+    
   },
   search: {
+    maxHeight:50,
+    marginTop: 30,
     width: Dimensions.get("window").width,
     backgroundColor: "#FFFFFF00",
     borderColor: "#FFFFFF00",
